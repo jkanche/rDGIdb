@@ -79,7 +79,7 @@ queryDGIdb <- function(genes,
     # Check internet connection
     tryCatch({
         msg <- ""
-        r <- GET("http://dgidb.genome.wustl.edu/api/v1/interaction_types.json")
+        r <- GET("https://dgidb.org/api/v2/interaction_types.json")
         if (status_code(r) != 200) {
             msg <- "DGIdb service not available."
         }
@@ -132,7 +132,7 @@ queryDGIdb <- function(genes,
 # long list of genes to be queried.
 queryDgidbPost <- function(genes, interactionSources, geneCategories,
             interactionTypes) {
-    url <- "http://dgidb.genome.wustl.edu/api/v1/interactions.json"
+    url <- "https://dgidb.org/api/v2/interactions.json"
     body <- list(genes = paste(genes, collapse = ","),
                     interaction_sources = interactionSources,
                     gene_categories = geneCategories,
